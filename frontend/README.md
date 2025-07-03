@@ -1,3 +1,7 @@
+# Frontend
+
+The UI provides an admin dashboard for managing bank account connections and payments connected through Plaid
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
 
 ## Getting Started
