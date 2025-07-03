@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
+import { fetchPayments } from './api/api'
 
 type PaymentsProps = {}
 
@@ -11,11 +12,16 @@ type Payment = {
 type Payments = Payment[]
 
 export default function Payments({ }: PaymentsProps) {
-  const [payments, setPayments] = useState<Payments[]>([])
+  const [payments, setPayments] = useState<Payments>([])
+
+  const getPayments = useCallback(async () => {
+    const payments = await fetchPayments()
+    setPayments(payments)
+  }, [])
 
   useEffect(() => {
-    // fetch payments on mount
-  }, [])
+    getPayments()
+  }, [getPayments])
 
   return (
       <div
@@ -23,6 +29,14 @@ export default function Payments({ }: PaymentsProps) {
     >
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
         <h1 className="text-2xl font-bold">Payments</h1>
+        <div>
+          {payments.map((payment: Payment) => (
+            <div key={payment.id}>
+              <p>{payment.source_routing_number}</p>
+              <p>{payment.destination_routing_number}</p>
+            </div>
+          ))}
+        </div>
       </main>
     </div>
   )
