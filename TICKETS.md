@@ -11,10 +11,8 @@
 - Create page for admin dashboard
 - Create page for managing bank accounts/connections
 - Create page for list of payments
-- Create page to manage reimbursements
 
 ## Frontend API integration
 - Fetch bank account connections
 - Create bank account connection
-- Fetch reimbursements for payments page
 - Create reimbursement
